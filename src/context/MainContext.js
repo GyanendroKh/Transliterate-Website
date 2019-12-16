@@ -4,7 +4,7 @@ export const MainContext = createContext();
 
 const MainContextProvider = ({ children }) => {
   const [title, setTitle] = useState('Home');
-  const [sideBarState, setSideBarState] = useState(true);
+  const [sideBarState, setSideBarState] = useState(false);
   return (
     <MainContext.Provider
       value={{
