@@ -8,7 +8,8 @@ import {
   ListItem,
   Paper,
   Avatar,
-  Typography
+  Typography,
+  Divider
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MainContext } from '../context/MainContext';
@@ -58,7 +59,7 @@ const SideBar = () => {
   return (
     <Drawer open={sideBarState} onClose={() => setSideBarState(!sideBarState)}>
       <Container className={classes.container}>
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={0}>
           <Avatar
             alt="Avatar"
             src="https://as1.ftcdn.net/jpg/01/50/40/40/500_F_150404044_dXI2utvn6Y6PivTbWk9lbIDR0UhM4A5Y.jpg"
@@ -69,7 +70,12 @@ const SideBar = () => {
         </Paper>
         <List component="nav">
           <LinkListItem to="/">Home</LinkListItem>
-          <LinkListItem to="/about">About</LinkListItem>
+          <LinkListItem to="/playstore">Play Store</LinkListItem>
+          <LinkListItem to="/privacy">Privacy Policy</LinkListItem>
+          <Divider style={{ margin: '5px auto' }} />
+          <ListItem style={{ paddingLeft: 5 }}>About</ListItem>
+          <LinkListItem to="/about/app">App</LinkListItem>
+          <LinkListItem to="/about/author">Author</LinkListItem>
         </List>
       </Container>
     </Drawer>

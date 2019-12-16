@@ -8,12 +8,12 @@ import {
   Container
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Menu as MenuIcon } from '@material-ui/icons';
-import { About, Error404, Home } from './';
+import { Menu as MenuIcon, Favorite as FavIcon } from '@material-ui/icons';
+import { Author, App, Error404, Home, PrivacyPolicy } from './';
 import { SideBar } from '../components';
 import { MainContext } from '../context/MainContext';
 
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles(theme => ({
   '@global': {
     '#root': {
       height: '100vh',
@@ -26,6 +26,10 @@ const useStyle = makeStyles(() => ({
   },
   main: {
     flex: '1 0 auto'
+  },
+  footer: {
+    padding: theme.spacing(2),
+    textAlign: 'center'
   }
 }));
 
@@ -53,12 +57,16 @@ const Page = () => {
       <Container className={classes.main} component="main">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
+          <Route exact path="/privacy" component={PrivacyPolicy} />
+          <Route exact path="/about/author" component={Author} />
+          <Route exact path="/about/app" component={App} />
           <Route path="/" component={Error404} />
         </Switch>
       </Container>
       <Container className={classes.footer} component="footer">
-        Footer
+        Developed with{' '}
+        <FavIcon style={{ color: 'red', position: 'relative', top: 6 }} /> by
+        Gyanendro Kh
       </Container>
     </>
   );

@@ -25,7 +25,7 @@ const useStyle = makeStyles(theme => ({
   swapBtn: {
     position: 'absolute',
     left: 'calc((100% / 2) - (64px / 2))',
-    top: '-2.5px'
+    top: '-1px'
   },
   item: {
     padding: theme.spacing(2),
@@ -34,6 +34,16 @@ const useStyle = makeStyles(theme => ({
   typeAction: {
     marginTop: theme.spacing(2),
     textAlign: 'right'
+  },
+  br: {
+    [theme.breakpoints.up('md')]: {
+      borderRight: '1px solid #313131'
+    }
+  },
+  bb: {
+    [theme.breakpoints.down('sm')]: {
+      borderBottom: '1px solid #313131'
+    }
   }
 }));
 
@@ -55,22 +65,16 @@ const Home = () => {
       className={classes.container}
       elevation={2}
     >
-      <Grid
-        item
-        xs={12}
-        style={{
-          borderBottom: '1px solid #313131'
-        }}
-      >
+      <Grid item xs={12} style={{ borderBottom: '1px solid #313131' }}>
         <Grid container spacing={1} className={classes.langContainer}>
           <Button className={classes.swapBtn}>
             <SwapHoriz />
           </Button>
           <Grid item xs={6} className={classes.langTitle}>
-            <Typography>English</Typography>
+            <Typography variant="subtitle1">English</Typography>
           </Grid>
           <Grid item xs={6} className={classes.langTitle}>
-            <Typography>Meitei Mayek</Typography>
+            <Typography variant="subtitle1">Meitei Mayek</Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -79,10 +83,7 @@ const Home = () => {
         xs={12}
         sm={12}
         md={6}
-        style={{
-          borderRight: '1px solid #313131',
-          borderBottom: '1px solid #313131'
-        }}
+        className={`${classes.bb} ${classes.br}`}
       >
         <Box className={classes.item}>
           <TextField
