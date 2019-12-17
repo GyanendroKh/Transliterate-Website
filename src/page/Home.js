@@ -10,6 +10,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { SwapHoriz, FileCopy } from '@material-ui/icons';
 import { MainContext } from '../context/MainContext';
+import { APIContext } from '../context/APIContext';
 
 const useStyle = makeStyles(theme => ({
   container: {
@@ -50,8 +51,13 @@ const useStyle = makeStyles(theme => ({
 const Home = () => {
   const classes = useStyle();
   const { setTitle } = useContext(MainContext);
+  const { api } = useContext(APIContext);
   const [source, setSource] = useState([]);
   const [trans, setTrans] = useState([]);
+
+  useEffect(() => {
+    api.get('/trans/api/eng?word=hello').then(res => console.log(res));
+  }, [api]);
 
   useEffect(() => {
     setTitle('Transliterate');
