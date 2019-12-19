@@ -57,6 +57,16 @@ const Page = () => {
       <Container className={classes.main} component="main">
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/playstore"
+            render={() => {
+              window.location.replace(
+                'https://play.google.com/store/apps/details?id=com.meiteimayek.transliterate'
+              );
+              return <></>;
+            }}
+          />
           <Route exact path="/privacy" component={PrivacyPolicy} />
           <Route exact path="/about/author" component={Author} />
           <Route exact path="/about/app" component={App} />
