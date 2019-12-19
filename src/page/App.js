@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Container, Paper, Avatar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MainContext } from '../context/MainContext';
+import trans from '../assets/trans.png';
 
 const useStyle = makeStyles(theme => ({
   avatar: {
@@ -22,11 +23,7 @@ const App = () => {
   return (
     <Container style={{ marginTop: 10 }}>
       <Paper style={{ padding: 15, textAlign: 'center' }}>
-        <Avatar
-          alt="Avatar"
-          src="https://as1.ftcdn.net/jpg/01/50/40/40/500_F_150404044_dXI2utvn6Y6PivTbWk9lbIDR0UhM4A5Y.jpg"
-          className={classes.avatar}
-        />
+        <Avatar alt="Avatar" src={trans} className={classes.avatar} />
         <Typography color="textPrimary" variant="subtitle1">
           Transliterate
         </Typography>

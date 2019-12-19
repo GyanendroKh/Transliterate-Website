@@ -24,7 +24,7 @@ const Author = () => {
       <Paper style={{ padding: 15, textAlign: 'center' }}>
         <Avatar
           alt="Avatar"
-          src="https://as1.ftcdn.net/jpg/01/50/40/40/500_F_150404044_dXI2utvn6Y6PivTbWk9lbIDR0UhM4A5Y.jpg"
+          src="https://gyanendrokh.github.io/static/media/me-150.09052cfa.webp"
           className={classes.avatar}
         />
         <Link

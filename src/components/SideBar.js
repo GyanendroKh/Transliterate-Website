@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { MainContext } from '../context/MainContext';
+import trans from '../assets/trans.png';
 
 const useStyle = makeStyles(theme => ({
   container: {
@@ -60,11 +61,7 @@ const SideBar = () => {
     <Drawer open={sideBarState} onClose={() => setSideBarState(!sideBarState)}>
       <Container className={classes.container}>
         <Paper className={classes.paper} elevation={0}>
-          <Avatar
-            alt="Avatar"
-            src="https://as1.ftcdn.net/jpg/01/50/40/40/500_F_150404044_dXI2utvn6Y6PivTbWk9lbIDR0UhM4A5Y.jpg"
-            className={classes.avatar}
-          />
+          <Avatar alt="Avatar" src={trans} className={classes.avatar} />
           <Typography variant="subtitle1">Transliterate</Typography>
           <Typography variant="subtitle2">Meitei Mayek</Typography>
         </Paper>
