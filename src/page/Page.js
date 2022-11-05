@@ -73,11 +73,11 @@ const Page = () => {
           <Route path="/" component={Error404} />
         </Switch>
       </Container>
-      <Container className={classes.footer} component="footer">
+      {/* <Container className={classes.footer} component="footer">
         Developed with{' '}
         <FavIcon style={{ color: 'red', position: 'relative', top: 6 }} /> by
         Gyanendro Kh
-      </Container>
+      </Container> */}
     </>
   );
 };

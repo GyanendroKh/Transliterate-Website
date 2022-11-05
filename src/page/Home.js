@@ -87,12 +87,12 @@ const Home = () => {
       if (string.join(' ').trim() === '') {
         return;
       }
-      let url = `/trans/api/${lang}?word=${string.join('+')}`;
+      let url = `/api/trans?to=${lang}&source=${string.join('+')}`;
       console.log('Fetching : ' + url);
       api
         .get(url)
         .then(res => {
-          setTrans(res.data.trans);
+          setTrans(res.data.output);
         })
         .catch(_ => {
           setMessage('There has been an error... Try again');

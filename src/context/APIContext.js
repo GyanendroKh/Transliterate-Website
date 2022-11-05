@@ -6,7 +6,7 @@ export const APIContext = createContext();
 
 const APIContextProvider = ({ children }) => {
   let a = axios.create({
-    baseURL: 'https://meiteimayek.tk'
+    baseURL: 'http://127.0.0.1:5000'
   });
 
   a.interceptors.request.use(
