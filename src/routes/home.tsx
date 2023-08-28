@@ -1,6 +1,32 @@
-import { FC } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { FC, useState } from 'react';
+import { apiClient } from '../apiClient';
+import { useDebounce } from '../hooks/useDebounce';
 
 export const HomePage: FC = () => {
+  const [to, setTo] = useState('mm');
+  const [source, setSource] = useState('');
+  const debouncedSource = useDebounce(source, 650);
+  const trans = useQuery({
+    queryKey: ['trans', to, debouncedSource],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      params.set('to', to);
+      params.set('source', source);
+
+      if (source === '') return { output: '', time: 0 };
+
+      const res = await apiClient.get<{ output: string; time: number }>(
+        `/api/trans?${params.toString()}`
+      );
+
+      return res.data;
+    },
+    staleTime: Infinity,
+    cacheTime: 1000 * 60 * 60,
+    keepPreviousData: true
+  });
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex py-4 px-16 shadow shadow-slate-800 bg-slate-900 mb-6">
@@ -35,12 +61,18 @@ export const HomePage: FC = () => {
 
         <div className="flex">
           <textarea
-            className="flex-1 py-8 px-6 border-r break-words break-all resize-none border-black bg-transparent focus:outline-0"
+            className="flex-1 py-8 px-6 border-r break-words resize-none border-black bg-transparent focus:outline-0"
             placeholder="Type Here..."
             rows={5}
+            value={source}
+            onChange={(e) => {
+              setSource(e.target.value);
+            }}
           />
 
-          <div className="flex-1 py-8 px-6">Transliteration</div>
+          <div className="flex-1 py-8 px-6">
+            {trans.data?.output || 'Transliteration'}
+          </div>
         </div>
       </div>
     </div>
