@@ -41,14 +41,14 @@ export const HomePage: FC = () => {
   });
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex py-4 px-16 shadow shadow-slate-800 bg-slate-900 mb-6">
+    <div className="flex h-full flex-col">
+      <div className="mb-6 flex bg-slate-900 px-16 py-4 shadow shadow-slate-800">
         <h1 className="text-2xl font-bold">Transliteration</h1>
       </div>
 
-      <div className="flex flex-col w-[95%] md:w-[85%] xl:w-[850px] bg-slate-800 mx-auto rounded-lg">
-        <div className="relative flex border-b border-black select-none">
-          <div className="flex-1 text-center p-4">Source</div>
+      <div className="mx-auto flex w-[95%] flex-col rounded-lg bg-slate-800 md:w-[85%] xl:w-[850px]">
+        <div className="relative flex select-none border-b border-black">
+          <div className="flex-1 p-4 text-center">Source</div>
 
           {/* <div
             className="absolute px-4 py-2 hover:bg-slate-900 rounded-md cursor-pointer"
@@ -70,8 +70,8 @@ export const HomePage: FC = () => {
           </div> */}
 
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex-1 text-center p-4 focus:outline-0 flex items-center justify-center gap-2">
-              <p>{TARGETS.find((t) => t.key === selectedTo)?.label ?? 'N/A'}</p>
+            <DropdownMenuTrigger className="flex flex-1 items-center justify-center gap-2 p-4 text-center focus:outline-0">
+              <p>{TARGETS.find(t => t.key === selectedTo)?.label ?? 'N/A'}</p>
 
               <svg
                 className="fill-white"
@@ -89,7 +89,7 @@ export const HomePage: FC = () => {
                 value={selectedTo}
                 onValueChange={setSelectedTo}
               >
-                {TARGETS.map((i) => {
+                {TARGETS.map(i => {
                   return (
                     <DropdownMenuRadioItem key={i.key} value={i.key}>
                       {i.label}
@@ -103,16 +103,16 @@ export const HomePage: FC = () => {
 
         <div className="flex">
           <textarea
-            className="flex-1 py-8 px-6 border-r break-words resize-none border-black bg-transparent focus:outline-0"
+            className="flex-1 resize-none break-words border-r border-black bg-transparent px-6 py-8 focus:outline-0"
             placeholder="Type Here..."
             rows={5}
             value={source}
-            onChange={(e) => {
+            onChange={e => {
               setSource(e.target.value);
             }}
           />
 
-          <div className="flex-1 py-8 px-6">
+          <div className="flex-1 px-6 py-8">
             {trans.data?.output || 'Transliteration'}
           </div>
         </div>
